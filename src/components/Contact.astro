@@ -1,0 +1,185 @@
+---
+const email = "mert.helvaci92@gmail.com";
+---
+
+<section class="contact" id="contact">
+  <div class="container">
+    <span class="section-label reveal">Contact</span>
+
+    <div class="contact-body reveal">
+      <p class="contact-headline">Let's work together.</p>
+
+      <button
+        class="email-btn"
+        id="email-copy"
+        data-email={email}
+        aria-label={`Copy email address ${email}`}
+      >
+        <span class="email-text">{email}</span>
+        <span class="copy-icon" aria-hidden="true">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+        </span>
+      </button>
+
+      <div class="download-cta">
+        <a
+          href="/cv/mert-helvaci-cv.pdf"
+          download
+          class="btn-download"
+          aria-label="Download CV PDF"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById("email-copy")!;
+  const emailText = btn.querySelector(".email-text")!;
+  const originalText = emailText.textContent!;
+  let resetTimeout: ReturnType<typeof setTimeout>;
+
+  btn.addEventListener("click", async () => {
+    const email = btn.dataset.email!;
+    try {
+      await navigator.clipboard.writeText(email);
+      emailText.textContent = "Copied!";
+      btn.classList.add("copied");
+
+      clearTimeout(resetTimeout);
+      resetTimeout = setTimeout(() => {
+        emailText.textContent = originalText;
+        btn.classList.remove("copied");
+      }, 2000);
+    } catch {
+      // Fallback: select text
+      window.location.href = `mailto:${email}`;
+    }
+  });
+</script>
+
+<style>
+  .contact {
+    padding: var(--section-padding) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .contact-headline {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    line-height: 1.1;
+  }
+
+  .email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    width: fit-content;
+    transition:
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      background-color var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .email-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+  }
+
+  .email-btn.copied {
+    color: var(--success);
+    border-color: var(--success);
+  }
+
+  .copy-icon {
+    color: var(--text-muted);
+    display: flex;
+    flex-shrink: 0;
+    transition: color var(--transition-fast);
+  }
+
+  .email-btn:hover .copy-icon {
+    color: var(--text-secondary);
+  }
+
+  .download-cta {
+    margin-top: 8px;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--surface);
+    background-color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    border-radius: 6px;
+    font-family: var(--font);
+    transition:
+      background-color var(--transition-mid),
+      border-color var(--transition-mid);
+  }
+
+  .btn-download:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .contact {
+      padding: var(--section-padding-mobile) 0;
+    }
+
+    .email-btn {
+      font-size: 14px;
+      word-break: break-all;
+    }
+  }
+</style>

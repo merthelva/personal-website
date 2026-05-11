@@ -1,0 +1,111 @@
+---
+const categories = [
+  {
+    name: "Frontend",
+    skills: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Responsive Design",
+      "Semantic Markup",
+      "Accessibility"
+    ],
+  },
+  {
+    name: "State & Data",
+    skills: ["Redux Toolkit", "RTK Query"],
+  },
+  {
+    name: "Infrastructure",
+    skills: ["Docker", "Kubernetes"],
+  },
+  {
+    name: "Backend",
+    skills: ["NestJS", "Express"],
+  },
+  {
+    name: "Testing",
+    skills: ["Jest", "React Testing Library"],
+  },
+];
+---
+
+<section class="skills" id="skills">
+  <div class="container">
+    <span class="section-label reveal">Skills</span>
+
+    <div class="skills-grid">
+      {
+        categories.map((cat, i) => (
+          <div class="skill-col reveal" style={`transition-delay: ${i * 80}ms`}>
+            <h3 class="cat-name">{cat.name}</h3>
+            <ul class="skill-list">
+              {cat.skills.map((skill) => (
+                <li class="skill-item">{skill}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills {
+    padding: var(--section-padding) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+
+  .cat-name {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .skill-item {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+  }
+
+  .skill-item:hover {
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .skills {
+      padding: var(--section-padding-mobile) 0;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

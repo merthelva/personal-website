@@ -1,0 +1,190 @@
+---
+const jobs = [
+  {
+    period: "Feb 2024 – Present",
+    company: "Eteration",
+    title: "Senior Frontend Developer",
+    bullets: [
+      "Leading Garanti BBVA TAMI Dijital Para frontend team and implementing user interfaces",
+      "Developed Garanti BBVA e-Trader app for web-only platform",
+      "Technical lead for Garanti TAMI NextJS project",
+      "Unit tests with React Testing Library and Jest",
+    ],
+  },
+  {
+    period: "Jul 2023 – Feb 2024",
+    company: "Warpiris",
+    title: "Frontend Developer",
+    bullets: [
+      "Built new web UI for Papara app using React and TypeScript",
+    ],
+  },
+  {
+    period: "Jul 2022 – May 2023",
+    company: "Evreka Software",
+    title: "Frontend Developer",
+    bullets: [
+      "Implemented UI designs with React and TypeScript",
+      "State management with Redux Toolkit and RTK Query",
+      "Styling with styled-components",
+      "Map operations with LeafletJS",
+      "Unit tests and Storybook story generation",
+    ],
+  },
+  {
+    period: "Nov 2021 – Jun 2022",
+    company: "Getir",
+    title: "Frontend Developer",
+    bullets: [
+      "Developed Getir Büyük and Getir Çarşı web platforms",
+      "State management with Redux and Redux Saga",
+    ],
+  },
+  {
+    period: "Jul 2020 – Oct 2021",
+    company: "SIMDATIX",
+    title: "Frontend Developer",
+    bullets: [
+      "Built Roadjet GmbH website using ReactJS and Bootstrap",
+    ],
+  },
+];
+---
+
+<section class="experience" id="experience">
+  <div class="container">
+    <span class="section-label reveal">Experience</span>
+
+    <div class="job-list">
+      {
+        jobs.map((job, i) => (
+          <article class="job reveal" style={`transition-delay: ${i * 60}ms`}>
+            <div class="job-meta">
+              <time class="job-period">{job.period}</time>
+            </div>
+            <div class="job-body">
+              <div class="job-header">
+                <span class="job-company">{job.company}</span>
+                <span class="job-title">{job.title}</span>
+              </div>
+              <ul class="job-bullets">
+                {job.bullets.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience {
+    padding: var(--section-padding) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .job {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .job:first-of-type {
+    border-top: 1px solid var(--border);
+  }
+
+  .job-meta {
+    padding-top: 3px;
+  }
+
+  .job-period {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .job-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .job-company {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: inline-block;
+    position: relative;
+    width: fit-content;
+    cursor: default;
+  }
+
+  .job-company::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+    transition: width var(--transition-mid);
+  }
+
+  .job:hover .job-company::after {
+    width: 100%;
+  }
+
+  .job-title {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .job-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .job-bullets li {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .job-bullets li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 640px) {
+    .experience {
+      padding: var(--section-padding-mobile) 0;
+    }
+
+    .job {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 28px 0;
+    }
+  }
+</style>

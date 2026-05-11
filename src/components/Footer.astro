@@ -1,0 +1,45 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="footer-copy">© {year} Mert Helvaci</span>
+    <a
+      href="https://astro.build"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-built"
+    >
+      Built with Astro
+    </a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .footer-built {
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-built:hover {
+    color: var(--text-secondary);
+  }
+</style>
