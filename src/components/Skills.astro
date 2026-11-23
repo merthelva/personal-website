@@ -4,28 +4,37 @@ const categories = [
     name: "Frontend",
     skills: [
       "React",
+      "Next.js (App Router)",
       "TypeScript",
-      "Next.js",
+      "JavaScript (ES6+)",
       "Responsive Design",
       "Semantic Markup",
-      "Accessibility"
+      "Accessibility",
     ],
   },
   {
     name: "State & Data",
-    skills: ["Redux Toolkit", "RTK Query"],
+    skills: ["Redux Toolkit", "RTK Query", "Context API"],
   },
   {
-    name: "Infrastructure",
-    skills: ["Docker", "Kubernetes"],
+    name: "Testing & Tools",
+    skills: ["Jest", "React Testing Library", "Storybook", "Git"],
+  },
+  {
+    name: "DevOps & Cloud",
+    skills: ["Docker", "Kubernetes (CKAD)", "CI/CD pipelines"],
+  },
+  {
+    name: "Styling & Maps",
+    skills: ["CSS3 / Sass", "styled-components", "Bootstrap", "LeafletJS"],
+  },
+  {
+    name: "AI & Agents",
+    skills: ["Custom MCP tools", "Eclipse LMOS", "Multi-agent workflows"],
   },
   {
     name: "Backend",
     skills: ["NestJS", "Express"],
-  },
-  {
-    name: "Testing",
-    skills: ["Jest", "React Testing Library"],
   },
 ];
 ---
@@ -59,8 +68,8 @@ const categories = [
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 24px;
   }
 
   .cat-name {
